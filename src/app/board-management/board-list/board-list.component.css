@@ -1,0 +1,12 @@
+#board-list-container{
+    padding: 20px;
+}
+
+#board-list-item {
+    padding: 10px;
+}
+
+#board-list-item > button {
+    height: 80px;
+    width:100%;
+}

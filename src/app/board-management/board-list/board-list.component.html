@@ -1,0 +1,9 @@
+<div id="board-list-container" class="row">
+  <ul class="list-unstyled">
+    <li *ngFor="let board of boards">
+        <div id="board-list-item" class="col-md-3">
+          <button class="btn btn-primary">{{ board.name }}</button>
+        </div>
+    </li>
+  </ul>
+</div>
