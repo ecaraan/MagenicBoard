@@ -4,10 +4,10 @@ import { Board } from '../../model/board';
 @Injectable()
 export class BoardService {
 
-  constructor() { }
+  boards: Board[];
 
-  public getBoards() : Board[] {
-    return [
+  constructor() {
+    this.boards = [
       {
         name: "Board 1",
       },
@@ -27,6 +27,25 @@ export class BoardService {
         name: "Board 6",
       } 
     ];
-  } 
+  }
 
+  public getBoards() : Board[] {
+    return this.boards;
+  }
+
+  public boardExists(name: string): boolean {
+    return this.boards.findIndex(item => item.name.toLowerCase() === name.toLowerCase()) != -1;
+  }
+
+  public addBoard(name: string): boolean {
+    if (!this.boardExists(name)){
+      var board = new Board();
+      board.name = name;
+
+      this.boards.push(board);
+      return true;
+    }
+
+    return false;
+  }
 }

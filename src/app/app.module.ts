@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { BoardService } from './@shared/services/board.service';
+import { MessagingService } from './@shared/services/messaging.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { BoardService } from './@shared/services/board.service';
     BoardManagementModule,
     BrowserAnimationsModule
   ],
-  providers: [BoardService],
+  providers: [BoardService, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

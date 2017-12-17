@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Board } from '../../model/board';
 import { BoardService } from '../../@shared/services/board.service';
+import { MessagingService } from '../../@shared/services/messaging.service';
+import { MatDialog } from '@angular/material';
+import { NewBoardComponent } from '../new-board/new-board.component';
 
 @Component({
   selector: 'app-navigation',
@@ -11,11 +14,26 @@ export class NavigationComponent implements OnInit {
 
   boards: Board[];
 
-  constructor(private boardService: BoardService) {
+  constructor(private boardService: BoardService, private messagingService: MessagingService, private dialog: MatDialog) {
     this.boards = boardService.getBoards();
   }
 
   ngOnInit() {
+  }
+
+  newBoard(): void {
+    let dialogRef = this.dialog.open(NewBoardComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        var isAdded = this.boardService.addBoard(result);
+
+        if (isAdded){
+          this.boards = this.boardService.getBoards();
+          this.messagingService.addBoard();
+        }
+      }
+    });    
   }
 
 }
