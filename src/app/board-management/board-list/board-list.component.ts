@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Board } from '../../model/board';
+import { BoardService } from '../../@shared/services/board.service';
 
 @Component({
   selector: 'app-board-list',
@@ -10,27 +11,8 @@ export class BoardListComponent implements OnInit {
 
   boards: Board[]
 
-  constructor() { 
-    this.boards = [
-      {
-        name: "Board 1",
-      },
-      {
-        name: "Board 2",
-      },
-      {
-        name: "Board 3",
-      },
-      {
-        name: "Board 4",
-      },
-      {
-        name: "Board 5",
-      },
-      {
-        name: "Board 6",
-      } 
-    ];
+  constructor(private boardService: BoardService) { 
+    this.boards = boardService.getBoards();
   }
 
   ngOnInit() {

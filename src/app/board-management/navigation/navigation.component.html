@@ -1,6 +1,15 @@
 <div id="navigation-container" class="row">
   <div class="col-md-3">
-    <button class="btn btn-default">Boards</button>
+    <button class="btn btn-default" [matMenuTriggerFor]="menu">Boards</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let board of boards">
+          <span>{{ board.name }}</span>
+      </button>
+      <hr>
+      <button mat-menu-item>
+        <span>Add New Board</span>
+      </button>
+    </mat-menu>
   </div>
   <div id="navigation-title" class="col-md-6">
     <h3>Magenic Board</h3>
