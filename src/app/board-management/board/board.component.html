@@ -1,0 +1,24 @@
+<div id="board-cards-container" class="row">
+  <h3>{{ board.name }}</h3>
+  <ul class="list-unstyled">
+    <li *ngFor="let card of cards">
+        <div id="board-card" class="col-md-4">
+          <div *ngFor="let task of card.tasks" class="row">
+            <div class="col-md-10">{{ task.name }}</div>
+            <div class="col-md-2 text-right">
+              <button class="btn btn-default">
+                <img src="assets/images/pencil.png" />
+              </button>
+            </div>
+          </div>
+        </div>
+    </li>
+  </ul>
+  <div>
+    <button>Add Card</button>
+  </div>
+  <div>
+    <button>Add</button>
+    <button>Cancel</button>
+  </div>
+</div>

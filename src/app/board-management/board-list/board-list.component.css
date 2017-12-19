@@ -2,11 +2,11 @@
     padding: 20px;
 }
 
-#board-list-item {
+.board-list-item {
     padding: 10px;
 }
 
-#board-list-item > button {
+.board-list-item > a {
     height: 80px;
     width:100%;
 }

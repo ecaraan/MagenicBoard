@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BoardManagementModule } from './board-management/board-management.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BoardManagementRoutingModule } from './board-management/board-management-routing.module';
 
 import { AppComponent } from './app.component';
 
@@ -16,7 +17,8 @@ import { MessagingService } from './@shared/services/messaging.service';
   imports: [
     BrowserModule,
     BoardManagementModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BoardManagementRoutingModule
   ],
   providers: [BoardService, MessagingService],
   bootstrap: [AppComponent]

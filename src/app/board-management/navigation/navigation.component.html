@@ -3,7 +3,7 @@
     <button class="btn btn-default" [matMenuTriggerFor]="menu">Boards</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let board of boards">
-          <span>{{ board.name }}</span>
+          <a routerLink="/board" routerLinkActive="active">{{ board.name }}</a>
       </button>
       <hr>
       <button mat-menu-item (click)="newBoard()">

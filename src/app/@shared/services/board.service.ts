@@ -10,21 +10,53 @@ export class BoardService {
     this.boards = [
       {
         name: "Board 1",
+        cards: [
+          {
+            name: 'To Do',
+            tasks: [
+              {
+                name: 'Task 1'
+              },
+              {
+                name: 'Task 2'
+              },
+              {
+                name: 'Task 3'
+              }
+            ]
+          },
+          {
+            name: 'In Progress',
+            tasks: [
+              {
+                name: 'Task 1'
+              },
+              {
+                name: 'Task 2'
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Board 2",
+        cards: []
       },
       {
         name: "Board 3",
+        cards: []
       },
       {
         name: "Board 4",
+        cards: []
       },
       {
         name: "Board 5",
+        cards: []
       },
       {
         name: "Board 6",
+        cards: []
       } 
     ];
   }
@@ -47,5 +79,9 @@ export class BoardService {
     }
 
     return false;
+  }
+
+  public getBoard(): Board {
+    return this.boards[0];
   }
 }
