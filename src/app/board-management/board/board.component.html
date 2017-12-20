@@ -1,13 +1,13 @@
 <div id="board-cards-container" class="row">
   <h3>{{ board.name }}</h3>
   <ul class="list-unstyled">
-    <li *ngFor="let card of board.cards">
+    <li *ngFor="let cardPool of board.cardPools">
         <div class="col-md-3 card-container">
-          <h4>{{ card.name }}</h4>
+          <h4>{{ cardPool.name }}</h4>
           <ul class="list-unstyled">
-            <li *ngFor="let task of card.tasks">
+            <li *ngFor="let card of cardPool.cards">
               <div class="row">
-                <div class="col-md-9">{{ task.name }}</div>
+                <div class="col-md-9">{{ card.name }}</div>
                 <button class="btn btn-default col-md-2">
                   <img src="assets/images/pencil.png" style="width:20px; height:20px" />
                 </button>

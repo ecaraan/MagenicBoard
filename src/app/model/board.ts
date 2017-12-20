@@ -1,7 +1,7 @@
-import { Card } from './card';
+import { CardPool } from './cardpool';
 
 export class Board {
     id: number;
     name: string;
-    cards: Card[];
+    cardPools: CardPool[];
 }

@@ -11,10 +11,11 @@ export class BoardService {
       {
         id: 1,
         name: "Board 1",
-        cards: [
+        cardPools: [
           {
+            id: 1,
             name: 'To Do',
-            tasks: [
+            cards: [
               {
                 name: 'Task 1'
               },
@@ -27,8 +28,9 @@ export class BoardService {
             ]
           },
           {
+            id: 2,
             name: 'In Progress',
-            tasks: [
+            cards: [
               {
                 name: 'Task 1'
               },
@@ -42,27 +44,27 @@ export class BoardService {
       {
         id: 2,
         name: "Board 2",
-        cards: []
+        cardPools: []
       },
       {
         id: 3,
         name: "Board 3",
-        cards: []
+        cardPools: []
       },
       {
         id: 4,
         name: "Board 4",
-        cards: []
+        cardPools: []
       },
       {
         id: 5,
         name: "Board 5",
-        cards: []
+        cardPools: []
       },
       {
         id: 6,
         name: "Board 6",
-        cards: []
+        cardPools: []
       } 
     ];
   }
