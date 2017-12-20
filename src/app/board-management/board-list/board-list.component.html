@@ -2,7 +2,7 @@
   <ul class="list-unstyled">
     <li *ngFor="let board of boards">
         <div class="board-list-item col-md-3">
-          <a routerLink="/board" routerLinkActive="active" class="btn btn-primary" style="padding-top:15px" role="button">{{ board.name }}</a>
+          <a [routerLink]="['/board', board.id]" routerLinkActive="active" class="btn btn-primary" role="button">{{ board.name }}</a>
         </div>
     </li>
   </ul>

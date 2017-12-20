@@ -5,7 +5,11 @@
 }
 
 #navigation-title {
-    text-align:center;
+    text-align:center;    
+}
+
+#navigation-title a {
+    color: #FFFFFF;
 }
 
 #navigation-title > h3 {

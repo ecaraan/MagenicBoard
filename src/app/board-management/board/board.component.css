@@ -2,7 +2,18 @@
     padding: 20px;
 }
 
-#board-card {
+.board-card {
     padding: 10px;
     width:100%;
+}
+
+.board-card > button > img {
+    width:20px;
+    height: 20px;
+}
+
+.card-container {
+    background: lightgrey;
+    padding: 10px;
+    margin: 10px;
 }

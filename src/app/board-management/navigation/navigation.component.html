@@ -3,7 +3,7 @@
     <button class="btn btn-default" [matMenuTriggerFor]="menu">Boards</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let board of boards">
-          <a routerLink="/board" routerLinkActive="active">{{ board.name }}</a>
+          <a [routerLink]="['/board', board.id]" routerLinkActive="active">{{ board.name }}</a>
       </button>
       <hr>
       <button mat-menu-item (click)="newBoard()">
@@ -12,7 +12,7 @@
     </mat-menu>
   </div>
   <div id="navigation-title" class="col-md-6">
-    <h3>Magenic Board</h3>
+    <h3><a routerLink="/" routerLinkActive="active">Magenic Board</a></h3>
   </div>
   <div id="navigation-login" class="col-md-3">
     <img src="assets/images/user_image.png" />

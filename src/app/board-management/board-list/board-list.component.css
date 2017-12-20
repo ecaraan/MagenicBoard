@@ -3,10 +3,12 @@
 }
 
 .board-list-item {
-    padding: 10px;
+    padding-top: 10px;
+    vertical-align: middle;
 }
 
 .board-list-item > a {
     height: 80px;
     width:100%;
+    line-height: 60px;
 }
