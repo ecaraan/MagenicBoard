@@ -1,5 +1,6 @@
 <div id="board-cards-container" class="row">
   <h3>{{ board.name }}</h3>
+  <br/>
   <ul class="list-unstyled">
     <li *ngFor="let cardPool of board.cardPools">
       <app-card-pool [cardPool]="cardPool"></app-card-pool>

@@ -1,7 +1,9 @@
 .card-container {
-    background: lightgrey;
-    margin: 10px;
+    background: #EEEEEE;
     padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px;
 }
 
 .card-container .btn-image {

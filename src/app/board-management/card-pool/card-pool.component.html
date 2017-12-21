@@ -1,27 +1,29 @@
-<div class="col-md-3 card-container">  
-  <h4>{{ cardPool.name }}</h4>
-  <ul class="list-unstyled">
-    <li *ngFor="let card of cardPool.cards">
-      <div class="row">
-        <div class="col-md-9">{{ card.name }}</div>
-        <div class="col-md-3" style="text-align:right">
-          <a (click)="editCard()"><img src="assets/images/pencil.png" class="btn-image" /></a>
+<div class="col-md-4">
+  <div class="card-container">
+    <h4>{{ cardPool.name }}</h4>
+    <ul class="list-unstyled">
+      <li *ngFor="let card of cardPool.cards">
+        <div class="row">
+          <div class="col-md-9">{{ card.name }}</div>
+          <div class="col-md-3" style="text-align:right">
+            <a (click)="editCard()"><img src="assets/images/pencil.png" class="btn-image" /></a>
+          </div>
         </div>
+      </li>
+    </ul>
+    <br/>
+    <div *ngIf="isAddMode;then add else read"></div>
+    <ng-template #read>
+      <div>
+        <button class="btn btn-primary btn-action" (click)="addCard()">Add Card</button>
       </div>
-    </li>
-  </ul>
-  <br/>
-  <div *ngIf="isAddMode;then add else read"></div>
-  <ng-template #read>
-    <div>
-      <button class="btn btn-primary btn-action" (click)="addCard()">Add Card</button>
-    </div>
-  </ng-template>
-  <ng-template #add>
-    <div>
-      <textarea></textarea>
-      <button class="btn btn-primary btn-action" (click)="submitAddCard()">Add</button>
-      <button class="btn btn-default btn-action" (click)="cancelAddCard()">Cancel</button>
-    </div>
-  </ng-template>
+    </ng-template>
+    <ng-template #add>
+      <div>
+        <textarea></textarea>
+        <button class="btn btn-primary btn-action" (click)="submitAddCard()">Add</button>
+        <button class="btn btn-default btn-action" (click)="cancelAddCard()">Cancel</button>
+      </div>
+    </ng-template>
+  </div>
 </div>
