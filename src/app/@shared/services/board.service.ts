@@ -1,12 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Board } from '../../model/board';
+import { CardPool } from '../../model/cardPool';
 
 @Injectable()
 export class BoardService {
 
   boards: Board[];
+  cardPools: CardPool[];
 
   constructor() {
+
+    this.cardPools = [
+      {
+        id: 1,
+        name: 'To Do',
+        cards: []
+      },
+      {
+        id: 2,
+        name: 'In Progress',
+        cards: []
+      },
+      {
+        id: 3,
+        name: 'Done',
+        cards: []
+      }
+    ];
+
     this.boards = [
       {
         id: 1,
@@ -38,33 +59,45 @@ export class BoardService {
                 name: 'Task 2'
               }
             ]
+          },
+          {
+            id: 3,
+            name: 'Done',
+            cards: [
+              {
+                name: 'Task 1'
+              },
+              {
+                name: 'Task 2'
+              }
+            ]
           }
         ]
       },
       {
         id: 2,
         name: "Board 2",
-        cardPools: []
+        cardPools: this.cardPools
       },
       {
         id: 3,
         name: "Board 3",
-        cardPools: []
+        cardPools: this.cardPools
       },
       {
         id: 4,
         name: "Board 4",
-        cardPools: []
+        cardPools: this.cardPools
       },
       {
         id: 5,
         name: "Board 5",
-        cardPools: []
+        cardPools: this.cardPools
       },
       {
         id: 6,
         name: "Board 6",
-        cardPools: []
+        cardPools: this.cardPools
       } 
     ];
   }
@@ -84,6 +117,7 @@ export class BoardService {
 
       board.id = lastId + 1;
       board.name = name;
+      board.cardPools = this.cardPools;
 
       this.boards.push(board);
       return true;

@@ -1,0 +1,19 @@
+.card-container {
+    background: lightgrey;
+    margin: 10px;
+    padding: 10px;
+}
+
+.card-container .btn-image {
+    width: 25px;
+    height: 25px;
+    cursor:pointer;
+}
+
+.card-container .btn-action {
+    width: 100px;
+}
+
+.card-container textarea {
+    width: 100%;
+}
