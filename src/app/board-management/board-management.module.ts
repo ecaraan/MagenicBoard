@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { BoardComponent } from './board/board.component';
 import { BoardManagementRoutingModule } from './board-management-routing.module';
 import { CardPoolComponent } from './card-pool/card-pool.component';
+import { SharedModule } from '../@shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule, MaterialModule, FormsModule, BoardManagementRoutingModule
+    CommonModule, MaterialModule, FormsModule, BoardManagementRoutingModule, SharedModule
   ],
   exports: [NavigationComponent, MainPageComponent],
   declarations: [NavigationComponent, MainPageComponent, BoardListComponent, NewBoardComponent, BoardComponent, CardPoolComponent],

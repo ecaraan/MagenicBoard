@@ -10,19 +10,26 @@ import { BoardService } from '../../@shared/services/board.service';
 export class NewBoardComponent implements OnInit {
 
   boardName: string;
+  validationErrors: string[];
 
   constructor(private boardService: BoardService, private dialogRef: MatDialogRef<NewBoardComponent>) {}
 
   ngOnInit() {
   }
 
-  onCreate() {
-    if (!this.boardService.boardExists(this.boardName))
-    {
+  onSubmit(f) {
+    this.validationErrors = [];
+
+    if (!f.invalid){
       this.dialogRef.close(this.boardName);
     }
     else{
-      alert('Board name already exists.')
+      if (f.controls.boardName.errors){
+        if (f.controls.boardName.errors.required)
+          this.validationErrors.push("Board Name is required.");
+        if (f.controls.boardName.errors.alreadyExists)
+          this.validationErrors.push(f.controls.boardName.errors.alreadyExists.value);          
+      }
     }
   }
 }

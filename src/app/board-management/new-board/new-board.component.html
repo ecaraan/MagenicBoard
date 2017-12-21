@@ -1,12 +1,22 @@
 <div>
-  <h2 mat-dialog-title>New Board</h2>  
-  <mat-dialog-content>        
-      <mat-form-field>
-          <input matInput [(ngModel)]="boardName" placeholder="Board Name">
-      </mat-form-field>
-  </mat-dialog-content>  
-  <mat-dialog-actions>
-    <button mat-button class="btn btn-default confirm-action-btn" (click)="onCreate()">Create</button>
-    <button mat-button mat-dialog-close class="btn btn-primary confirm-action-btn">Cancel</button>    
-  </mat-dialog-actions>
+  <h2 mat-dialog-title>New Board</h2> 
+  <form id="boardForm" name="boardForm" #boardForm="ngForm" (ngSubmit)="onSubmit(boardForm)" novalidate>
+    <mat-dialog-content>
+      <div>
+        <mat-form-field>
+          <input matInput id="boardName" name="boardName" placeholder="Board Name" type="text" class="form-control"
+          [(ngModel)]="boardName" required appUniqueBoard>
+        </mat-form-field>
+      </div>
+      <div *ngIf="validationErrors && validationErrors.length > 0" class="alert alert-danger">
+        <div *ngFor="let error of validationErrors">
+          <div><small>{{ error }}</small></div>
+        </div>
+      </div>
+    </mat-dialog-content>  
+    <mat-dialog-actions>
+      <button type="submit" mat-button class="btn btn-default confirm-action-btn">Create</button>
+      <button mat-button mat-dialog-close class="btn btn-primary confirm-action-btn">Cancel</button>    
+    </mat-dialog-actions>
+  </form> 
 </div>
