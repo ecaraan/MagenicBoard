@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Board } from '../../model/board';
 import { CardPool } from '../../model/cardPool';
+import { Card } from '../../model/card';
 
 @Injectable()
 export class BoardService {
@@ -110,6 +111,21 @@ export class BoardService {
     return this.boards.findIndex(item => item.name.toLowerCase() === name.toLowerCase()) != -1;
   }
 
+  public cardExists(boardId: number, cardName: string): boolean {
+    let board = this.boards.find(item => item.id == boardId);
+    var alreadyExists = false;
+
+    for (let cardPool of board.cardPools){
+      if (cardPool.cards.findIndex(c => c.name.toLowerCase() === cardName.toLowerCase()) != -1)
+      {
+        alreadyExists = true;
+        break;
+      }    
+    }
+
+    return alreadyExists;
+  }
+
   public addBoard(name: string): boolean {
     if (!this.boardExists(name)){
       var board = new Board();
@@ -128,5 +144,20 @@ export class BoardService {
 
   public getBoard(id: number): Board {
     return this.boards.find(_ => _.id == id);
+  }
+
+  public addCard(name: string, boardId: number, cardPoolId: number): boolean
+  {
+    if (!this.cardExists(boardId, name)){
+      let cardPool = this.boards.find(b => b.id == boardId).cardPools.find(c => c.id == cardPoolId);
+      var newCard = new Card();
+
+      newCard.name = name;
+      cardPool.cards.push(newCard);
+
+      return true;
+    }
+
+    return false;
   }
 }

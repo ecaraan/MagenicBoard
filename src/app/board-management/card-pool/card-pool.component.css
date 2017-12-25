@@ -16,6 +16,7 @@
     width: 100px;
 }
 
-.card-container textarea {
+.card-container input {
     width: 100%;
+    background: #ffffff;
 }

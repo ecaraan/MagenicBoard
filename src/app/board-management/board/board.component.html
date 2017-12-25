@@ -3,7 +3,7 @@
   <br/>
   <ul class="list-unstyled">
     <li *ngFor="let cardPool of board.cardPools">
-      <app-card-pool [cardPool]="cardPool"></app-card-pool>
+      <app-card-pool [boardId]="board.id" [cardPool]="cardPool"></app-card-pool>
     </li>
   </ul>
 </div>

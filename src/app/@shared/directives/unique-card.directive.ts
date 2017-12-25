@@ -3,15 +3,17 @@ import { ValidatorFn, AbstractControl, NG_VALIDATORS, Validator, ValidationError
 import { BoardService } from '../services/board.service';
 
 @Directive({
-  selector: '[appUniqueBoard]',
+  selector: '[appUniqueCard]',
   providers: [{
     provide: NG_VALIDATORS,
-    useExisting: UniqueBoardDirective,
+    useExisting: UniqueCardDirective,
     multi: true
   }]
 })
 
-export class UniqueBoardDirective implements Validator  {
+export class UniqueCardDirective implements Validator  {
+
+  @Input() appUniqueCard: number;
 
   constructor(private boardService: BoardService) { } 
 
@@ -23,8 +25,8 @@ export class UniqueBoardDirective implements Validator  {
     return (control: AbstractControl): {[key: string]: any} => {
 
       if (control.value){
-        return this.boardService.boardExists(control.value)
-          ? {'alreadyExists' : { value: 'The board name already exists.' }}
+        return this.boardService.cardExists(this.appUniqueCard, control.value)
+          ? {'alreadyExists' : { value: 'The card name already exists.' }}
           : null;
       }
 

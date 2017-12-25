@@ -19,10 +19,20 @@
       </div>
     </ng-template>
     <ng-template #add>
+      <div *ngIf="validationErrors && validationErrors.length > 0" class="alert alert-danger">
+        <div *ngFor="let error of validationErrors">
+          <div><small>{{ error }}</small></div>
+        </div>
+      </div>
       <div>
-        <textarea></textarea>
-        <button class="btn btn-primary btn-action" (click)="submitAddCard()">Add</button>
-        <button class="btn btn-default btn-action" (click)="cancelAddCard()">Cancel</button>
+        <form id="cardForm" name="cardForm" #cardForm="ngForm" (ngSubmit)="submitAddCard(cardForm)" novalidate>
+          <mat-form-field>
+            <input matInput id="cardName" name="cardName" placeholder="Card Name" type="text" class="form-control"
+              [(ngModel)]="cardName" required [appUniqueCard]="boardId" />
+          </mat-form-field><br/>
+          <button type="submit" class="btn btn-primary btn-action">Add</button>
+          <button class="btn btn-default btn-action" (click)="cancelAddCard()">Cancel</button>
+        </form>
       </div>
     </ng-template>
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BoardService } from '../../@shared/services/board.service';
+import { CardPool } from '../../model/cardpool';
 
 @Component({
   selector: 'app-card-pool',
@@ -7,10 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardPoolComponent implements OnInit {
 
-  @Input() cardPool: string;
+  @Input() boardId: number;
+  @Input() cardPool: CardPool;
+  cardName: string;
   isAddMode: boolean = false;
+  validationErrors: string[];
 
-  constructor() { }
+  constructor(private boardService: BoardService) { }
 
   ngOnInit() {
   }
@@ -23,7 +28,21 @@ export class CardPoolComponent implements OnInit {
     this.isAddMode = true;
   }
 
-  submitAddCard(): void {
+  submitAddCard(f): void {
+    this.validationErrors = [];
+    
+    if (!f.invalid){
+      this.boardService.addCard(this.cardName, this.boardId, this.cardPool.id);
+      this.isAddMode = false;
+    }
+    else{
+      if (f.controls.cardName.errors){
+        if (f.controls.cardName.errors.required)
+          this.validationErrors.push("Card Name is required.");
+        if (f.controls.cardName.errors.alreadyExists)
+          this.validationErrors.push(f.controls.cardName.errors.alreadyExists.value);          
+      }
+    }
   }
 
   cancelAddCard(): void {
