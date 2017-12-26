@@ -112,7 +112,7 @@ export class BoardService {
   }
 
   public cardExists(boardId: number, cardName: string): boolean {
-    let board = this.boards.find(item => item.id == boardId);
+    let board = this.getBoard(boardId);
     var alreadyExists = false;
 
     for (let cardPool of board.cardPools){
@@ -149,7 +149,7 @@ export class BoardService {
   public addCard(name: string, boardId: number, cardPoolId: number): boolean
   {
     if (!this.cardExists(boardId, name)){
-      let cardPool = this.boards.find(b => b.id == boardId).cardPools.find(c => c.id == cardPoolId);
+      let cardPool = this.getCardPool(boardId, cardPoolId);
       var newCard = new Card();
 
       newCard.name = name;
@@ -163,5 +163,17 @@ export class BoardService {
 
   public getCardPools() : CardPool[] {
     return this.cardPools;
+  }
+
+  public moveCard(boardId: number, previousCardPoolId: number, newCardPoolId: number, cardToMove: Card) : void {
+     let previousCardPool = this.getCardPool(boardId, previousCardPoolId);
+     let newCardPool = this.getCardPool(boardId, newCardPoolId);
+
+     previousCardPool.cards = previousCardPool.cards.filter(c => c.name != cardToMove.name);
+     newCardPool.cards.push(cardToMove);
+  }
+
+  private getCardPool(boardId: number, cardPoolId: number) : CardPool {
+    return this.boards.find(b => b.id == boardId).cardPools.find(c => c.id == cardPoolId);
   }
 }

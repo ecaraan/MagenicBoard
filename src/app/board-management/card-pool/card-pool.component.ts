@@ -33,12 +33,7 @@ export class CardPoolComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        // var isAdded = this.boardService.addBoard(result);
-
-        // if (isAdded){
-        //   this.boards = this.boardService.getBoards();
-        //   this.messagingService.addBoard();
-        // }
+        this.boardService.moveCard(this.boardId, this.cardPool.id, result, card);
       }
     });
   }
