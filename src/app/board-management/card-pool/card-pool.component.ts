@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BoardService } from '../../@shared/services/board.service';
 import { CardPool } from '../../model/cardpool';
+import { Card } from '../../model/card';
+import { MatDialog } from '@angular/material';
+import { MoveCardComponent } from '../move-card/move-card.component'
 
 @Component({
   selector: 'app-card-pool',
@@ -15,16 +18,33 @@ export class CardPoolComponent implements OnInit {
   isAddMode: boolean = false;
   validationErrors: string[];
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  editCard(): void {
-    alert('hahah');
+  editCard(card: Card, cardPool: number): void {
+    let dialogRef = this.dialog.open(MoveCardComponent, {
+      data: {
+        currentCardPool: cardPool,
+        card: card
+      }
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        // var isAdded = this.boardService.addBoard(result);
+
+        // if (isAdded){
+        //   this.boards = this.boardService.getBoards();
+        //   this.messagingService.addBoard();
+        // }
+      }
+    });
   }
 
   addCard(): void {
+    this.cardName = '';
     this.isAddMode = true;
   }
 

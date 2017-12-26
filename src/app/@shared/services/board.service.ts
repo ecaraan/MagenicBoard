@@ -54,10 +54,10 @@ export class BoardService {
             name: 'In Progress',
             cards: [
               {
-                name: 'Task 1'
+                name: 'Task 4'
               },
               {
-                name: 'Task 2'
+                name: 'Task 5'
               }
             ]
           },
@@ -66,10 +66,10 @@ export class BoardService {
             name: 'Done',
             cards: [
               {
-                name: 'Task 1'
+                name: 'Task 6'
               },
               {
-                name: 'Task 2'
+                name: 'Task 7'
               }
             ]
           }
@@ -108,7 +108,7 @@ export class BoardService {
   }
 
   public boardExists(name: string): boolean {
-    return this.boards.findIndex(item => item.name.toLowerCase() === name.toLowerCase()) != -1;
+    return this.boards.findIndex(item => item.name.toLowerCase().trim() === name.toLowerCase().trim()) != -1;
   }
 
   public cardExists(boardId: number, cardName: string): boolean {
@@ -116,7 +116,7 @@ export class BoardService {
     var alreadyExists = false;
 
     for (let cardPool of board.cardPools){
-      if (cardPool.cards.findIndex(c => c.name.toLowerCase() === cardName.toLowerCase()) != -1)
+      if (cardPool.cards.findIndex(c => c.name.toLowerCase().trim() === cardName.toLowerCase().trim()) != -1)
       {
         alreadyExists = true;
         break;
@@ -159,5 +159,9 @@ export class BoardService {
     }
 
     return false;
+  }
+
+  public getCardPools() : CardPool[] {
+    return this.cardPools;
   }
 }

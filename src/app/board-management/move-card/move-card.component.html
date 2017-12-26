@@ -1,0 +1,23 @@
+<div>
+  <h2 mat-dialog-title>Move Card - {{ card.name }}</h2> 
+  <form id="cardForm" name="cardForm" #boardForm="ngForm" (ngSubmit)="onSubmit(cardForm)" novalidate>
+    <mat-dialog-content>
+      <div *ngIf="validationErrors && validationErrors.length > 0" class="alert alert-danger">
+        <div *ngFor="let error of validationErrors">
+          <div><small>{{ error }}</small></div>
+        </div>
+      </div>
+      <div id="option-container">
+        <mat-radio-group id="newCardPool" name="newCardPool">
+          <div *ngFor="let cardPool of cardPools">
+            <mat-radio-button [value]="cardPool.id">{{ cardPool.name }}</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>      
+    </mat-dialog-content>  
+    <mat-dialog-actions>
+      <button type="submit" mat-button class="btn btn-default btn-action">Move</button>
+      <button mat-button mat-dialog-close class="btn btn-primary btn-action">Cancel</button>    
+    </mat-dialog-actions>
+  </form> 
+</div>

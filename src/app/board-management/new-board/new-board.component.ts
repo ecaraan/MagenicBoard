@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { BoardService } from '../../@shared/services/board.service';
 
 @Component({
   selector: 'app-new-board',
@@ -12,7 +11,7 @@ export class NewBoardComponent implements OnInit {
   boardName: string;
   validationErrors: string[];
 
-  constructor(private boardService: BoardService, private dialogRef: MatDialogRef<NewBoardComponent>) {}
+  constructor(private dialogRef: MatDialogRef<NewBoardComponent>) {}
 
   ngOnInit() {
   }
