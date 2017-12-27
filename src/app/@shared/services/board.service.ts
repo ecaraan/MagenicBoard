@@ -126,7 +126,7 @@ export class BoardService {
     return alreadyExists;
   }
 
-  public addBoard(name: string): boolean {
+  public addBoard(name: string): number {
     if (!this.boardExists(name)){
       var board = new Board();
       var lastId = this.boards.map(b => b.id).sort()[this.boards.length - 1];
@@ -136,10 +136,10 @@ export class BoardService {
       board.cardPools = this.cardPools;
 
       this.boards.push(board);
-      return true;
+      return board.id;
     }
 
-    return false;
+    return 0;
   }
 
   public getBoard(id: number): Board {

@@ -4,6 +4,7 @@ import { BoardService } from '../../@shared/services/board.service';
 import { MessagingService } from '../../@shared/services/messaging.service';
 import { MatDialog } from '@angular/material';
 import { NewBoardComponent } from '../new-board/new-board.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -14,7 +15,8 @@ export class NavigationComponent implements OnInit {
 
   boards: Board[];
 
-  constructor(private boardService: BoardService, private messagingService: MessagingService, private dialog: MatDialog) {
+  constructor(private boardService: BoardService, private messagingService: MessagingService,
+    private dialog: MatDialog, private router: Router) {
     this.boards = boardService.getBoards();
   }
 
@@ -26,11 +28,12 @@ export class NavigationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        var isAdded = this.boardService.addBoard(result);
+        let id = this.boardService.addBoard(result);
 
-        if (isAdded){
+        if (id > 0){
           this.boards = this.boardService.getBoards();
           this.messagingService.addBoard();
+          this.router.navigateByUrl('/board/' + id);
         }
       }
     });    

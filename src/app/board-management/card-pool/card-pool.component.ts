@@ -60,7 +60,8 @@ export class CardPoolComponent implements OnInit {
     }
   }
 
-  cancelAddCard(): void {
+  cancelAddCard(e): void {
     this.isAddMode = false;
+    e.preventDefault();
   }
 }
