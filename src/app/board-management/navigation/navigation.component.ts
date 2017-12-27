@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
         if (id > 0){
           this.boards = this.boardService.getBoards();
           this.messagingService.addBoard();
-          this.router.navigateByUrl('/board/' + id);
+          //this.router.navigateByUrl('/board/' + id);
         }
       }
     });    

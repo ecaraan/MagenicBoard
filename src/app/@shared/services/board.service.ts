@@ -7,27 +7,8 @@ import { Card } from '../../model/card';
 export class BoardService {
 
   boards: Board[];
-  cardPools: CardPool[];
 
-  constructor() {
-
-    this.cardPools = [
-      {
-        id: 1,
-        name: 'To Do',
-        cards: []
-      },
-      {
-        id: 2,
-        name: 'In Progress',
-        cards: []
-      },
-      {
-        id: 3,
-        name: 'Done',
-        cards: []
-      }
-    ];
+  constructor() {  
 
     this.boards = [
       {
@@ -78,28 +59,48 @@ export class BoardService {
       {
         id: 2,
         name: "Board 2",
-        cardPools: this.cardPools
+        cardPools: this.getDefaultCardPools()
       },
       {
         id: 3,
         name: "Board 3",
-        cardPools: this.cardPools
+        cardPools: this.getDefaultCardPools()
       },
       {
         id: 4,
         name: "Board 4",
-        cardPools: this.cardPools
+        cardPools: this.getDefaultCardPools()
       },
       {
         id: 5,
         name: "Board 5",
-        cardPools: this.cardPools
+        cardPools: this.getDefaultCardPools()
       },
       {
         id: 6,
         name: "Board 6",
-        cardPools: this.cardPools
+        cardPools: this.getDefaultCardPools()
       } 
+    ];
+  }
+
+  private getDefaultCardPools(): CardPool[] {
+    return [
+      {
+        id: 1,
+        name: 'To Do',
+        cards: []
+      },
+      {
+        id: 2,
+        name: 'In Progress',
+        cards: []
+      },
+      {
+        id: 3,
+        name: 'Done',
+        cards: []
+      }
     ];
   }
 
@@ -133,7 +134,7 @@ export class BoardService {
 
       board.id = lastId + 1;
       board.name = name;
-      board.cardPools = this.cardPools;
+      board.cardPools = this.getDefaultCardPools();
 
       this.boards.push(board);
       return board.id;
@@ -162,7 +163,7 @@ export class BoardService {
   }
 
   public getCardPools() : CardPool[] {
-    return this.cardPools;
+    return this.getDefaultCardPools();
   }
 
   public moveCard(boardId: number, previousCardPoolId: number, newCardPoolId: number, cardToMove: Card) : void {
